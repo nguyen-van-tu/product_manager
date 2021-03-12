@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <head th:replace="/layout :: head"></head>
+</head>
+<center>
+    <body>
+    <h3>Form edit</h3>
+    <form id="form" th:object="${product}" method="post">
+        <div>
+            <label>Name</label>
+            <input type="text" th:field="*{name}"/>
+        </div>
+        <div>
+            <label>Price</label>
+            <input type="text" th:field="*{price}"/>
+        </div>
+        <div>
+            <label>Category</label>
+            <select th:field="*{category}">
+                <th:block th:each="p: ${categories}">
+                    <option th:value="${p.id}" th:text="${p.name}"></option>
+                </th:block>
+            </select>
+        </div>
+        <div>
+            <label>Description</label>
+            <input type="text" th:field="*{description}"/>
+        </div>
+        <div>
+            <label>Datetime</label>
+            <input type="date" th:field="*{dateOfManufacture}"/>
+        </div>
+        <div>
+            <label>Quantity</label>
+            <input type="number" th:field="*{quantity}"/>
+        </div>
+        <button type="submit">Edit</button>
+    </form>
+    <footer th:replace="/layout :: footer"></footer>
+    </body>
+</center>
+
+</html>
