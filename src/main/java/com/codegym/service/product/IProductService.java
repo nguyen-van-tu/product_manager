@@ -10,4 +10,5 @@ public interface IProductService extends IService<Product> {
     List<Product> findByCategoryName(Long id);
     List<Product> top5Price();
     List<Product> top5ProductNew();
+    Long totalPrice();
 }

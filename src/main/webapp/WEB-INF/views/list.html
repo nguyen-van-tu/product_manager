@@ -28,6 +28,11 @@
     <input type="submit" value="Top 5 new product"/>
 </form>
 
+<form action="/products/totalPrice">
+    <input type="submit" value="Total price">
+</form>
+<span style="color: red" th:if="${totalPrice}" th:text="${totalPrice}+'VNĐ'"></span>
+
 
 <h4><a href="/products/create">Create new product</a></h4>
 

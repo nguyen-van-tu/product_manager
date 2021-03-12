@@ -56,6 +56,12 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public Long totalPrice() {
+        return productRepository.totalPrice();
+    }
+
+
+    @Override
     public List<Product> findByCategoryName(Long id) {
         return productRepository.findProductByCategoryName(id);
     }

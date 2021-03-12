@@ -1,5 +1,6 @@
 package com.codegym.controller;
 
+import com.codegym.exception.NotFoundException;
 import com.codegym.model.Category;
 import com.codegym.model.Product;
 import com.codegym.service.category.ICategoryService;
@@ -53,6 +54,10 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView("create", "product", new Product());
         modelAndView.addObject("mess", "product has been added successfully " + product.getName());
         return modelAndView;
+    }
+    @ExceptionHandler(NotFoundException.class)
+    public ModelAndView showNotFound() {
+        return new ModelAndView("error-404");
     }
 
     @GetMapping("/edit/{id}")
@@ -111,6 +116,13 @@ public class ProductController {
     public ModelAndView top5newProduct(){
         ModelAndView modelAndView = new ModelAndView("list");
         modelAndView.addObject("products",productService.top5ProductNew());
+        return modelAndView;
+    }
+    @GetMapping("/totalPrice")
+    public ModelAndView sumPrice() {
+        ModelAndView modelAndView = new ModelAndView("list");
+        modelAndView.addObject("totalPrice", productService.totalPrice());
+        modelAndView.addObject("products", productService.findALl());
         return modelAndView;
     }
 

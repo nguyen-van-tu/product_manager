@@ -27,6 +27,9 @@ public interface IProductRepository extends PagingAndSortingRepository<Product, 
     @Query(value = "select * from product order by dateOfManufacture desc limit ?" , nativeQuery = true)
     List<Product> findByTopNewProduct (int limit);
 
+    @Query(value = "select sum(price*quantity) from Product " , nativeQuery = true)
+    long totalPrice();
+
 
 
 }
